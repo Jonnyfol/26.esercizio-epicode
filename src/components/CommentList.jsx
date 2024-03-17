@@ -15,11 +15,16 @@ import React from 'react';
 
 const CommentList = ({ comments, onDeleteComment }) => {
   return (
-    <ul>
+    <ul className="list-group">
       {comments.map((comment) => (
-        <li key={comment._id}>
-          {comment.comment}
-          <button onClick={() => onDeleteComment(comment._id)}>Delete</button>
+        <li key={comment._id} className="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <p>{comment.comment}</p>
+            <p>Rate: {comment.rate}</p>
+          </div>
+          <button onClick={() => onDeleteComment(comment._id)} className="btn btn-danger">
+            Delete
+          </button>
         </li>
       ))}
     </ul>
@@ -27,4 +32,6 @@ const CommentList = ({ comments, onDeleteComment }) => {
 };
 
 export default CommentList;
+
+
 

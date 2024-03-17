@@ -77,10 +77,9 @@
 //   );
 // }
 
-
 import React, { useState } from 'react';
 
-export default function AddComment({ bookAsin, onCommentSubmit }) {
+export default function AddComment({ bookAsin, onAddComment }) {
   const [comment, setComment] = useState('');
   const [rate, setRate] = useState(1);
 
@@ -110,8 +109,8 @@ export default function AddComment({ bookAsin, onCommentSubmit }) {
       });
 
       if (response.ok) {
-        const newComment = { comment, rate };
-        onCommentSubmit(newComment); // Aggiungi il nuovo commento alla lista
+        const newComment = { _id: Math.random().toString(), comment, rate }; // Generiamo un ID univoco per il nuovo commento
+        onAddComment(newComment); // Aggiungi il nuovo commento alla lista senza dover effettuare una nuova richiesta al server
         setComment('');
         setRate(1);
       }
@@ -154,6 +153,3 @@ export default function AddComment({ bookAsin, onCommentSubmit }) {
     </div>
   );
 }
-
-
-
