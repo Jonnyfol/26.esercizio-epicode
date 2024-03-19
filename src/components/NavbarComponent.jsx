@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 
-export default function NavbarComponent() {
+export default function NavbarComponent({ searchText, onSearchChange }) {
   return (
     <div > 
         <div>
@@ -20,9 +20,16 @@ export default function NavbarComponent() {
               <Nav.Link href="#link" className="text-light">Browse</Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          <input
+              type="text"
+              value={searchText}
+              onChange={onSearchChange}
+              placeholder="Search"
+            />
         </Container>
       </Navbar>
       </div>
     </div>
   );
 }
+

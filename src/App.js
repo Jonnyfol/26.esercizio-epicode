@@ -1,20 +1,27 @@
-
+import React, { useState } from 'react';
 import "./App.css";
+import NavbarComponent from './components/NavbarComponent';
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavbarComponent from "./components/navbar";
-import Myfooter from "./components/myfooter";
-import Myalert from "./components/Myalert";
-import AllTheBooks from "./components/AllTheBooks";
+import Myfooter from './components/Myfooter';
+import Myalert from './components/Myalert';
+import AllTheBooks from './components/AllTheBooks';
 
 function App() {
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
   return (
     <div className="App">
-      <NavbarComponent />
+      <NavbarComponent searchText={searchText} onSearchChange={handleSearchChange} />
       <Myalert />
-      <AllTheBooks/>
-      <Myfooter />
+      <AllTheBooks searchText={searchText} />
+      <Myfooter/>
     </div>
   );
 }
 
 export default App;
+
