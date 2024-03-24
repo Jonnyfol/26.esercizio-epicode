@@ -58,7 +58,6 @@ export default function CommentArea({ book, selected }) {
 
       if (response.ok) {
         fetchComments(); // Aggiorna i commenti dopo aver aggiunto uno nuovo
-        window.location.reload(); // Ricarica la pagina dopo l'aggiunta del commento
       } else {
         console.error(
           "Errore durante l'invio del commento:",
