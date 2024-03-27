@@ -1,22 +1,36 @@
-import React from 'react';
-import SingleBook from './singlebook';
+import { Col, Row } from "react-bootstrap";
+import fantasy from "../data/fantasy.json";
+import SingleBook from "./SingleBook";
+import CommentArea from "./CommentArea";
+import { useState } from "react";
 
-import fantasyData from '../data/fantasy.json';
-
-
-
-export default function AllTheBooks({ searchText }) {
-  const filteredBooks = fantasyData.filter((book) =>
-    book.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+const AllTheBooks = ({ searchQuery }) => {
+  const [selected, setSelected] = useState(false);
 
   return (
-    <div className="container">
-      <div className="row row-cols-1 row-cols-md-3">
-        {filteredBooks.map((book) => (
-          <SingleBook key={book.asin} book={book} />
-        ))}
-      </div>
-    </div>
+    <Row>
+      <Col md={8}>
+        <Row className="g-2 mt-3">
+          {fantasy
+            .filter((b) => b.title.toLowerCase().includes(searchQuery))
+            .map((book) => {
+              return (
+                <Col xs={12} md={4} key={book.asin}>
+                  <SingleBook
+                    book={book}
+                    selected={selected}
+                    setSelected={setSelected}
+                  />
+                </Col>
+              );
+            })}
+        </Row>
+      </Col>
+      <Col md={4}>
+        <CommentArea asin={selected} />
+      </Col>
+    </Row>
   );
-}
+};
+
+export default AllTheBooks;
