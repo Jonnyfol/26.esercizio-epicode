@@ -1,12 +1,9 @@
-import React from "react";
+const MyFooter = () => (
+  <footer className="d-flex bg-dark mt-2">
+    <span className="text-white m-auto p-2">
+      <strong>EPICODE</strong> - Copyright {new Date().getFullYear()}
+    </span>
+  </footer>
+);
 
-export default function Myfooter() {
-  return (
-    <div>
-      <div className="container-fluid ">
-        <p>diritti riservati</p>
-        <p>visualizza la legge 1234 sulla provacy</p>
-      </div>
-    </div>
-  );
-}
+export default MyFooter;

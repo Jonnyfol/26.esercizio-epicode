@@ -26,7 +26,7 @@ const AddComment = ({ asin }) => {
           headers: {
             "Content-type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWVlMTljNDM3MDAwMTkzYzM3NGEiLCJpYXQiOjE3MTA1MzA0OTksImV4cCI6MTcxMTc0MDA5OX0.UHClt_auOqxu0GAKX0s3tOPI-pf-4NFNJXoHT1NoPbY",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWQ0ZWVlMTljNDM3MDAwMTkzYzM3NGEiLCJpYXQiOjE3MTE4MjcyNjMsImV4cCI6MTcxMzAzNjg2M30.R6_Pzdh11dTAuKsgWM2chP3x2b9jFFOV0Ce6T7ZQk5g",
           },
         }
       );

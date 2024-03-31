@@ -1,8 +1,9 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Importa Link da react-router-dom
+import { Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const SingleBook = ({ setSelected, selected, book }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Card
@@ -14,10 +15,12 @@ const SingleBook = ({ setSelected, selected, book }) => {
         <Card.Img variant="top" src={book.img} />
         <Card.Body>
           <Card.Title style={{ color: "black" }}>{book.title}</Card.Title>
-          {/* Aggiungi il pulsante per navigare a BookDetails */}
-          <Link to={`/book/${book.asin}`}>
-            <Button variant="primary">View Details</Button>
-          </Link>
+          <Button
+            className="w-100 mt-2"
+            onClick={() => navigate(`/details/${book.asin}`)}
+          >
+            VAI AI DETTAGLI
+          </Button>
         </Card.Body>
       </Card>
     </>

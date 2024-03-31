@@ -1,41 +1,30 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import NavbarComponent from "./components/NavbarComponent";
-import Myfooter from "./components/Myfooter";
+import MyNav from "./components/MyNav";
+import MyFooter from "./components/MyFooter";
+import Welcome from "./components/Welcome";
 import AllTheBooks from "./components/AllTheBooks";
-import BookDetails from "./components/BookDetails"; // Importa il nuovo componente
 import { Container } from "react-bootstrap";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NotFound from "./components/NotFound";
+import BookDetails from "./components/BookDetails";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <MyNav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Container>
+        <Welcome />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavbarComponent
-                  searchQuery={searchQuery}
-                  setSearchQuery={setSearchQuery}
-                />
-                <Container>
-                  <Welcome />
-                  <AllTheBooks searchQuery={searchQuery} />
-                </Container>
-                <Myfooter />
-              </>
-            }
-          />
-          <Route path="/book/:asin" element={<BookDetails />} />{" "}
-          {/* Nuova rotta per BookDetails */}
-          <Route path="/*" element={<h1>404 Page not found</h1>} />
+          <Route path="/" element={<AllTheBooks searchQuery={searchQuery} />} />
+          <Route path="/details/:asin" element={<BookDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </>
+      </Container>
+      <MyFooter />
+    </BrowserRouter>
   );
 }
 
